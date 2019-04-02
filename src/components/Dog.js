@@ -1,10 +1,11 @@
 import React from 'react';
 import './styles/Dog.scss';
 
-const Dog = () => {
+const Dog = ({ image }) => {
+  const style = { backgroundImage: `url(${image})` };
 
   return (
-    <button className="dog">Dog</button>
+    <button style={style} className="dog"></button>
   )
 }
 
