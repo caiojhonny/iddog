@@ -1,5 +1,28 @@
-import React from 'react'
+import React from 'react';
+import Dog from './Dog';
+import Page from './Page';
+import './styles/FeedList.scss';
 
-const FeedList = () => <h1>Feed list page</h1>
+class FeedList extends React.Component {
 
-export default FeedList
+  render(){
+
+    return (
+      <Page>
+        <section className="feed-list">
+          <React.Fragment>
+            <Dog />
+            <Dog />
+            <Dog />
+            <Dog />
+            <Dog />
+            <Dog />
+          </React.Fragment>
+        </section>
+      </Page>
+    )
+  }
+}
+
+
+export default FeedList;

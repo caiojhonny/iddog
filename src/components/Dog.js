@@ -1,5 +1,11 @@
-import React from 'react'
+import React from 'react';
+import './styles/Dog.scss';
 
-const Dog = () => <h1>Dog component</h1>
+const Dog = () => {
 
-export default Dog
+  return (
+    <button className="dog">Dog</button>
+  )
+}
+
+export default Dog;
