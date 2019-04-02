@@ -5,7 +5,6 @@ import './index.css';
 import SignUp from './components/SignUp';
 import FeedList from './components/FeedList';
 import NotFound from './components/NotFound';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { PrivateRoute } from './helpers/PrivateRoute';
 
