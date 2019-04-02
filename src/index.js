@@ -1,10 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import './index.css';
+import SignUp from './components/SignUp';
+import FeedList from './components/FeedList';
+import NotFound from './components/NotFound';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import { PrivateRoute } from './helpers/PrivateRoute';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const routing = (
+    <Router>
+        <Switch>
+            <Route exact path="/" render={() => <Redirect to="/feed" />} />
+            <Route path="/signup" component={SignUp} />
+            <PrivateRoute path="/feed/:id?" component={FeedList} />
+            <Route component={NotFound} />
+        </Switch>
+    </Router>
+)
+
+ReactDOM.render(routing, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
