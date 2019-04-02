@@ -1,5 +1,46 @@
-import React from 'react'
+import React from 'react';
+import SignUpInput from './SignUpInput';
+import Page from './Page';
+import './styles/SignUp.scss';
 
-const SignUp = () => <h1>Sign up page</h1>
+class SignUp extends React.Component {
 
-export default SignUp
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    
+    fetch('https://api-iddog.idwall.co/signup', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: data.get('email'),
+      }),
+    })
+    .then(response => response.json())
+    .then(jsondata => {
+      sessionStorage.setItem('token', jsondata.user.token);
+      this.props.history.push('/feed');
+    })
+  }
+
+  render(){
+    return (
+      <Page>
+        <form className="signup-form" onSubmit={this.handleSubmit}>
+          <SignUpInput />
+        </form>
+      </Page>
+    )
+  }
+}
+
+export default SignUp;

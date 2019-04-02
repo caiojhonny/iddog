@@ -1,5 +1,22 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import './styles/SignUpInput.scss';
 
-const SignUpInput = () => <h1>Input</h1>
+const Input = styled.input`
+  padding: 0.5em;
+  margin: 0.5em;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,.1);
+  width: 100%;
+  outline: none;
+`;
 
-export default SignUpInput
+const SignUpInput = () => {
+  return (
+      <Input placeholder="your email" type="email" id="email" name="email" required autoFocus />
+  )
+}
+
+
+export default SignUpInput;
