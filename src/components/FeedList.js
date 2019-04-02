@@ -15,12 +15,17 @@ class FeedList extends React.Component {
   }
 
   componentDidMount() {
-    this.getList('husky');
+    let cat = sessionStorage.getItem('category');
+    if(!cat || cat === ''){
+      this.getList('husky');
+    }else{
+      this.getList(cat);
+    }
   }
 
   getList(c) {
     let token = sessionStorage.getItem('token');
-    if(!token || token === '') {//if there is no token, dont bother
+    if(!token || token === '') {
       this.props.history.push('/signup');
     }else{
       fetch('https://api-iddog.idwall.co/feed?category='+c, {
@@ -36,7 +41,9 @@ class FeedList extends React.Component {
           this.setState({
             category: jsondata.category,
             dogs: jsondata.list
-          })
+          });
+          // Save category on storage
+          sessionStorage.setItem('category', jsondata.category);
         }
       })
     } 
