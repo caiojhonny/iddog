@@ -1,6 +1,7 @@
 import React from 'react';
 import FeedList from './FeedList';
 import CategoryNav from './CategoryNav';
+import Logout from './Logout';
 import Page from './Page';
 import queryString from 'query-string'
 import './styles/Feed.scss';
@@ -15,6 +16,7 @@ class Feed extends React.Component {
     }
 
     this.getList = this.getList.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -50,11 +52,17 @@ class Feed extends React.Component {
     } 
   }
 
+  logout(){
+    sessionStorage.removeItem('token');
+    this.props.history.push('/signup');
+  }
+
   render(){
     const { category, dogs } = this.state;
     
     return (
       <Page>
+        <Logout logout={this.logout} />
         <CategoryNav category={category} getList={this.getList} />
         <FeedList category={category} dogs={dogs} props={this.props}/>
       </Page>
