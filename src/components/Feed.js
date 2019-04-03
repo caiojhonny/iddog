@@ -20,6 +20,7 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
+    document.title = 'The IDDOG | Feed';
     let params = queryString.parse(this.props.location.search)
     if(params.category !== undefined){
         if(params.id !== undefined){

@@ -11,6 +11,10 @@ class SignUp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    document.title = 'The IDDOG | Sign Up';
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
