@@ -5,13 +5,13 @@ const CategoryNav = ({ category, getList }) => {
 
   return (
     <nav className="nav">
-        <a className={ category === 'husky' ? 'nav-item nav-active': 'nav-item' } href="feed?category=husky">Husky</a>
+        <button className={ category === 'husky' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('husky')}>Husky</button>
         <span className="nav-separator">/</span>
-        <a className={ category === 'hound' ? 'nav-item nav-active': 'nav-item' } href="feed?category=hound">Hound</a>
+        <button className={ category === 'hound' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('hound')}>Hound</button>
         <span className="nav-separator">/</span>
-        <a className={ category === 'pug' ? 'nav-item nav-active': 'nav-item' } href="feed?category=pug">Pug</a>
+        <button className={ category === 'pug' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('pug')}>Pug</button>
         <span className="nav-separator">/</span>
-        <a className={ category === 'labrador' ? 'nav-item nav-active': 'nav-item' } href="feed?category=labrador">Labrador</a>
+        <button className={ category === 'labrador' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('labrador')}>Labrador</button>
     </nav>    
   )
 }

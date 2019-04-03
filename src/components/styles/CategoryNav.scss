@@ -19,6 +19,7 @@
     font-size: .8em;
     color: black;
     text-decoration: none;
+    transition: all .1s linear;
     &:hover{
         opacity: .7;
     }

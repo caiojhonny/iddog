@@ -4,6 +4,12 @@
     top: 1.5em;
     background-color: transparent;
     border: 0;
-    text-transform: lowercase;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
+    opacity: .6;
+    transition: all .1s linear;
+    &:hover{
+        opacity: 1;
+    }
 }

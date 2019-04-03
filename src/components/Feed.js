@@ -22,13 +22,17 @@ class Feed extends React.Component {
   componentDidMount() {
     let params = queryString.parse(this.props.location.search)
     if(params.category !== undefined){
-        this.getList(params.category);
+        if(params.id !== undefined){
+            this.getList(params.category, params.id);
+        }else{
+            this.getList(params.category);
+        }
     }else{
         this.getList('husky');
     }
   }
 
-  getList(c) {
+  getList(c, id) {
     let token = sessionStorage.getItem('token');
     if(!token || token === '') {
       this.props.history.push('/signup');
@@ -47,6 +51,11 @@ class Feed extends React.Component {
             category: jsondata.category,
             dogs: jsondata.list
           });
+          const search = id ? `?category=${c}&id=${id}` : `?category=${c}`;
+          this.props.history.push({
+            pathname: '/feed',
+            search: search
+          })
         }
       })
     } 

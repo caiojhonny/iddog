@@ -4,7 +4,7 @@ import queryString from 'query-string'
 
 const FeedList = ({ dogs, category, props }) => {
   let params = queryString.parse(props.location.search)
-  
+  console.log(params);
   if(params.id !== undefined){
     const dogFiltered = dogs[params.id];
     const alt = `${category} Dog`;
@@ -14,7 +14,7 @@ const FeedList = ({ dogs, category, props }) => {
   }else{
     return (
       <section className="feed-list">
-        {dogs.map((image, index) => <Dog key={index} id={index} image={image} category={category} /> )}
+        {dogs.map((image, index) => <Dog key={index} id={index} image={image} category={category} props={props} /> )}
       </section>  
     )
   }

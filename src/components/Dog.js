@@ -1,12 +1,18 @@
 import React from 'react';
 import './styles/Dog.scss';
 
-const Dog = ({ image, id, category }) => {
+function Dog({image, id, category, props}) {
   const style = { backgroundImage: `url(${image})` };
-  const href = `feed?category=${category}&id=${id}`;
+
+  function viewDog(id, category){
+    props.history.push({
+      pathname: '/feed',
+      search: `?category=${category}&id=${id}`
+    })
+  }
 
   return (
-    <a style={style} href={href} className="dog"><span className="hidden">{category} Dog</span></a>
+    <button style={style} className="dog" onClick={() => viewDog(id, category)}><span className="hidden">{category} Dog</span></button>
   )
 }
 
