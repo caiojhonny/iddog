@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import './index.css';
 import SignUp from './components/SignUp';
-import FeedList from './components/FeedList';
+import Feed from './components/Feed';
 import NotFound from './components/NotFound';
 import * as serviceWorker from './serviceWorker';
 import { PrivateRoute } from './helpers/PrivateRoute';
@@ -13,7 +13,7 @@ const routing = (
         <Switch>
             <Route exact path="/" render={() => <Redirect to="/feed" />} />
             <Route path="/signup" component={SignUp} />
-            <PrivateRoute path="/feed/:id?" component={FeedList} />
+            <PrivateRoute path="/feed/:id?" component={Feed} />
             <Route component={NotFound} />
         </Switch>
     </Router>
