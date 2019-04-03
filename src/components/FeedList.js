@@ -4,7 +4,7 @@ import queryString from 'query-string'
 
 const FeedList = ({ dogs, category, props }) => {
   let params = queryString.parse(props.location.search)
-  console.log(params);
+  
   if(params.id !== undefined){
     const dogFiltered = dogs[params.id];
     const alt = `${category} Dog`;

@@ -17,6 +17,7 @@ export default function Page({ children }) {
           The <strong>IDDOG</strong>
         </h1>
         <Wrapper>{children}</Wrapper>
+        <small className="footer">© iddog, all rights reserved.</small>
       </div>
     </Fragment>
   )
