@@ -1,7 +1,20 @@
 import React from 'react';
-import Dog from '../Dog';
+import styled from '@emotion/styled'
 import queryString from 'query-string'
-import './index.scss';
+import Dog from '../Dog';
+
+const Section = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+`
+
+const Img = styled.img`
+  max-width: 450px;
+  margin: 0 auto;
+`
 
 const FeedList = ({ dogs, category, isLoading, parentProps }) => {
   let params = queryString.parse(parentProps.location.search)
@@ -14,13 +27,13 @@ const FeedList = ({ dogs, category, isLoading, parentProps }) => {
     const dogFiltered = dogs[params.id];
     const alt = `${category} Dog`;
     return (
-      <img src={dogFiltered} alt={alt} className="img-dog" />
+      <Img src={dogFiltered} alt={alt} />
     )
   } else {
     return (
-      <section className="feed-list">
+      <Section>
         {dogs.map((image, index) => <Dog key={index} id={index} image={image} category={category} {...parentProps} /> )}
-      </section>  
+      </Section>  
     )
   }
 }

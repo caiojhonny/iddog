@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import styled from '@emotion/styled'
+
 import SignUpInput from '../../components/SignUpInput';
 import HelpText from '../../components/HelpText';
 import Page from '../../components/Page';
-import './index.scss';
 
-class SignUp extends React.Component {
+const Form = styled.form`
+  width: 100%;
+  max-width: 300px;
+  margin: 2em auto;
+`
+
+class SignUp extends Component {
 
   constructor(props) {
     super(props);
@@ -40,10 +47,10 @@ class SignUp extends React.Component {
   render(){
     return (
       <Page>
-        <form className="signup-form" onSubmit={this.handleSubmit}>
+        <Form className="signup-form" onSubmit={this.handleSubmit}>
           <SignUpInput />
           <HelpText msg="press enter to submit" />
-        </form>
+        </Form>
       </Page>
     )
   }

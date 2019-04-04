@@ -1,13 +1,30 @@
 import React from 'react';
-import './index.scss';
+import styled from '@emotion/styled'
+
+const Nav = styled.nav`
+  max-width: 300px;
+  width: 100%;
+  margin: 1em auto;
+  display: flex;
+  justify-content: space-between;
+`
+
+const Button = styled.button`
+  letter-spacing: 2px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+`
 
 const ImageNav = ({ changeImage }) => {
 
   return (
-    <nav className="img-nav">
-        <button className="img-nav-btn" onClick={() => changeImage('prev')}>Prev</button>
-        <button className="img-nav-btn" onClick={() => changeImage('next')}>Next</button>
-    </nav>    
+    <Nav>
+        <Button onClick={() => changeImage('prev')}>Prev</Button>
+        <Button onClick={() => changeImage('next')}>Next</Button>
+    </Nav>    
   )
 }
 

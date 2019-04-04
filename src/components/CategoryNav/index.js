@@ -1,18 +1,56 @@
 import React from 'react';
-import './index.scss';
+import { css } from 'emotion'
+import styled from '@emotion/styled'
+
+const Nav = styled.nav`
+  width: 100%;
+  text-align: center;
+  padding: 2em;
+`
+
+const Button = styled.button`
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  opacity: 0.4;
+  letter-spacing: 2px;
+  padding: 1em 0;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: .8em;
+  color: black;
+  text-decoration: none;
+  transition: all .1s linear;
+  :hover{
+    opacity: .7;
+  }
+  :last-child:after{
+    display: none;
+  }
+`
+
+const Span = styled.span`
+  margin: 0 .5em;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: .5;
+`
 
 const CategoryNav = ({ category, getList }) => {
 
   return (
-    <nav className="nav">
-        <button className={ category === 'husky' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('husky')}>Husky</button>
-        <span className="nav-separator">/</span>
-        <button className={ category === 'hound' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('hound')}>Hound</button>
-        <span className="nav-separator">/</span>
-        <button className={ category === 'pug' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('pug')}>Pug</button>
-        <span className="nav-separator">/</span>
-        <button className={ category === 'labrador' ? 'nav-item nav-active': 'nav-item' } onClick={() => getList('labrador')}>Labrador</button>
-    </nav>    
+    <Nav>
+        <Button className={css([category === 'husky' && {opacity: '1'}])} onClick={() => getList('husky')}>Husky</Button>
+        <Span>/</Span>
+        <Button className={css([category === 'hound' && {opacity: '1'}])} onClick={() => getList('hound')}>Hound</Button>
+        <Span>/</Span>
+        <Button className={css([category === 'pug' && {opacity: '1'}])} onClick={() => getList('pug')}>Pug</Button>
+        <Span>/</Span>
+        <Button className={css([category === 'labrador' && {opacity: '1'}])} onClick={() => getList('labrador')}>Labrador</Button>
+    </Nav>    
   )
 }
 
