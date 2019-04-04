@@ -7,6 +7,6 @@ export const client = (url, token) =>
             'Content-Type': 'application/json',
         },
     })
-        .then(response => response.json())
-        .then(jsondata => jsondata)
-        .catch(error => error)
+    .then(response => response.json())
+    .then(jsondata => jsondata)
+    .catch(error => error)

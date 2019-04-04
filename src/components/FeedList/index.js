@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from '@emotion/styled'
-import queryString from 'query-string'
+import styled from '@emotion/styled';
+import queryString from 'query-string';
+
 import Dog from '../Dog';
 
 const Section = styled.section`
@@ -20,7 +21,7 @@ const FeedList = ({ dogs, category, isLoading, parentProps }) => {
   let params = queryString.parse(parentProps.location.search)
   
   if (isLoading) {
-    return (<p>loading...</p>)
+    return (<p>Loading...</p>)
   }
 
   if (params.id !== undefined) {

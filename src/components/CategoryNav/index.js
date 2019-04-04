@@ -1,6 +1,6 @@
 import React from 'react';
-import { css } from 'emotion'
-import styled from '@emotion/styled'
+import { css } from 'emotion';
+import styled from '@emotion/styled';
 
 const Nav = styled.nav`
   width: 100%;

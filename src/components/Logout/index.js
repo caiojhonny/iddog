@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 const Button = styled.button`
   position: absolute;
@@ -19,7 +19,7 @@ const Button = styled.button`
 
 const Logout = ({ logout }) => {
   return (
-    <Button className="logout" onClick={() => logout()}>Logout</Button>
+    <Button onClick={() => logout()}>Logout</Button>
   )
 }
 

@@ -32,7 +32,7 @@ class Feed extends Component {
     document.addEventListener("keydown", this.directionFunction, false);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     document.removeEventListener("keydown", this.directionFunction, false);
   }
 

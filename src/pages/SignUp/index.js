@@ -47,7 +47,7 @@ class SignUp extends Component {
   render(){
     return (
       <Page>
-        <Form className="signup-form" onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <SignUpInput />
           <HelpText msg="press enter to submit" />
         </Form>

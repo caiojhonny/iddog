@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
-import styled from '@emotion/styled'
-import { Global, css } from "@emotion/core"
+import React, { Fragment } from 'react';
+import styled from '@emotion/styled';
+import { Global, css } from "@emotion/core";
 
 const App = styled.div`
   padding: 4em 0 1em;
@@ -36,7 +36,7 @@ const Small = styled.small`
   display: block;
 `
 
-export default function Page({ children }) {
+const Page = ({ children }) => {
 
   return (
     <Fragment>
@@ -66,3 +66,5 @@ export default function Page({ children }) {
     </Fragment>
   )
 }
+
+export default Page;

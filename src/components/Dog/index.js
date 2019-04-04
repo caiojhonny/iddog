@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 const Button = styled.button`
   width: 300px;
@@ -20,10 +20,10 @@ const Span = styled.span`
   display: none;
 `
 
-function Dog({ image, id, category, history }) {
+function Dog ({ image, id, category, history }) {
   const style = { backgroundImage: `url(${image})` };
 
-  function viewDog(id, category){
+  function viewDog (id, category) {
     history.push({
       pathname: '/feed',
       search: `?category=${category}&id=${id}`
