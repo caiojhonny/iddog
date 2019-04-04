@@ -25,16 +25,7 @@ class Feed extends Component {
     document.title = 'The IDDOG | Feed';
     const params = queryString.parse(this.props.location.search);
     const { category, id } = params || ''
-
-    if(category !== undefined){
-      if(id !== undefined){
-        this.getList(category, id);
-      } else {
-        this.getList(category);
-      }
-    } else {
-      this.getList('husky');
-    }
+    this.getList(category, id);
 
     document.addEventListener("keydown", this.directionFunction, false);
   }
@@ -43,43 +34,13 @@ class Feed extends Component {
     document.removeEventListener("keydown", this.directionFunction, false);
   }
 
-  // changeImage(direction){
-  //   let params = queryString.parse(this.props.location.search);
-  //   let id;
-  //   if(direction === 'next'){
-  //     if(parseInt(params.id) === this.state.dogs.length-1){
-  //       id = 0;
-  //     }else{
-  //       id = parseInt(params.id)+1;
-  //     }
-  //     const search = `?category=${params.category}&id=${id}`;
-  //     this.props.history.push({
-  //       pathname: '/feed',
-  //       search: search
-  //     })
-  //   }else{
-  //     if(parseInt(params.id) === 0){
-  //       id = this.state.dogs.length-1;
-  //     }else{
-  //       id = parseInt(params.id)-1;
-  //     }
-  //     const search = `?category=${params.category}&id=${id}`;
-  //     this.props.history.push({
-  //       pathname: '/feed',
-  //       search: search
-  //     })
-  //   }
-  // }
-
-
   changeImage(direction) {
     const params = queryString.parse(this.props.location.search);
     
     if (direction === 'next') {
       return this.nextDog(params)
-    }else{
-      return this.prevDog(params)
     }
+    return this.prevDog(params)
   }
 
   search(search) {
@@ -104,20 +65,19 @@ class Feed extends Component {
   }
 
   directionFunction(event){
-    if(event.keyCode === 37) {
+    if (event.keyCode === 37) {
       this.changeImage('prev');
-    }else if(event.keyCode === 39){
+    }else if (event.keyCode === 39){
       this.changeImage('next');
     }
   }
-
   
-  getList(c = 'husky', id) {
+  getList(category = 'husky', id) {
     let token = sessionStorage.getItem('token');
-    if(!token || token === '') {
+    if (!token || token === '') {
       this.props.history.push('/signup');
     }else{
-      fetch('https://api-iddog.idwall.co/feed?category='+c, {
+      fetch('https://api-iddog.idwall.co/feed?category='+category, {
         method: 'GET',
         headers: {
           'Authorization': token,
@@ -126,12 +86,12 @@ class Feed extends Component {
       })
       .then(response => response.json())
       .then(jsondata => {
-        if(!jsondata.error){
+        if (!jsondata.error){
           this.setState({
             category: jsondata.category,
             dogs: jsondata.list
           });
-          const search = id ? `?category=${c}&id=${id}` : `?category=${c}`;
+          const search = id ? `?category=${category}&id=${id}` : `?category=${category}`;
           this.props.history.push({
             pathname: '/feed',
             search: search

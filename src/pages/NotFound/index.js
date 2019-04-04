@@ -1,6 +1,20 @@
 import React from 'react'
-import './index.scss';
+import styled from 'styled-components';
 
-const NotFound = () => <h1>Not found</h1>
+import Page from '../../components/Page';
+
+const Title = styled.h1`
+  width: 100%;
+  font-size: 2em;
+  margin: 2em 0;
+`;
+
+const NotFound = () =>{
+    return(
+        <Page>
+            <Title>Page not found</Title>
+        </Page>
+    )
+} 
 
 export default NotFound
