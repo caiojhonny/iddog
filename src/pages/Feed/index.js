@@ -7,21 +7,23 @@ import ImageNav from '../../components/ImageNav';
 import Logout from '../../components/Logout';
 import Page from '../../components/Page';
 
+import { getBreedList } from '../../services/iddog'
+
 class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
       category: '',
-      dogs: [],
-      search: ''
+      dogs: []
     }
 
     this.getList = this.getList.bind(this);
     this.logout = this.logout.bind(this);
     this.changeImage = this.changeImage.bind(this);
+    this.directionFunction = this.directionFunction.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     document.title = 'The IDDOG | Feed';
     const params = queryString.parse(this.props.location.search);
     const { category, id } = params || ''
@@ -34,7 +36,7 @@ class Feed extends Component {
     document.removeEventListener("keydown", this.directionFunction, false);
   }
 
-  changeImage(direction) {
+  changeImage = (direction) => {
     const params = queryString.parse(this.props.location.search);
     
     if (direction === 'next') {
@@ -64,7 +66,7 @@ class Feed extends Component {
     this.search(`?category=${category}&id=${nextId}`);
   }
 
-  directionFunction(event){
+  directionFunction(event) {
     if (event.keyCode === 37) {
       this.changeImage('prev');
     }else if (event.keyCode === 39){
@@ -72,33 +74,21 @@ class Feed extends Component {
     }
   }
   
-  getList(category = 'husky', id) {
-    let token = sessionStorage.getItem('token');
-    if (!token || token === '') {
-      this.props.history.push('/signup');
-    }else{
-      fetch('https://api-iddog.idwall.co/feed?category='+category, {
-        method: 'GET',
-        headers: {
-          'Authorization': token,
-          'Content-Type': 'application/json',
-        },
+  getList = async (breed = 'husky', id) => {
+    const search = id ? `?category=${breed}&id=${id}` : `?category=${breed}`;
+    const { dogs, category } = await getBreedList(breed)
+      
+    if (dogs) {
+      this.setState({
+        category,
+        dogs
       })
-      .then(response => response.json())
-      .then(jsondata => {
-        if (!jsondata.error){
-          this.setState({
-            category: jsondata.category,
-            dogs: jsondata.list
-          });
-          const search = id ? `?category=${category}&id=${id}` : `?category=${category}`;
-          this.props.history.push({
-            pathname: '/feed',
-            search: search
-          })
-        }
-      })
-    } 
+    }
+
+    return this.props.history.push({
+      pathname: '/feed',
+      search
+    })
   }
 
   logout(){
@@ -106,15 +96,16 @@ class Feed extends Component {
     this.props.history.push('/signup');
   }
 
-  render(){
+  render() {
+    const { id } = queryString.parse(this.props.location.search);
     const { category, dogs } = this.state;
     
     return (
       <Page>
         <Logout logout={this.logout} />
         <CategoryNav category={category} getList={this.getList} />
-        <FeedList category={category} dogs={dogs} props={this.props}/>
-        <ImageNav changeImage={this.changeImage} />
+        <FeedList category={category} dogs={dogs} parentProps={this.props} isLoading={dogs.length === 0}/>
+        {id && <ImageNav changeImage={this.changeImage} />}
       </Page>
     )
   }

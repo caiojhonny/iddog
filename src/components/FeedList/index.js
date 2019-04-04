@@ -3,19 +3,23 @@ import Dog from '../Dog';
 import queryString from 'query-string'
 import './index.scss';
 
-const FeedList = ({ dogs, category, props }) => {
-  let params = queryString.parse(props.location.search)
+const FeedList = ({ dogs, category, isLoading, parentProps }) => {
+  let params = queryString.parse(parentProps.location.search)
   
-  if(params.id !== undefined){
+  if (isLoading) {
+    return (<p>loading...</p>)
+  }
+
+  if (params.id !== undefined) {
     const dogFiltered = dogs[params.id];
     const alt = `${category} Dog`;
     return (
       <img src={dogFiltered} alt={alt} className="img-dog" />
     )
-  }else{
+  } else {
     return (
       <section className="feed-list">
-        {dogs.map((image, index) => <Dog key={index} id={index} image={image} category={category} props={props} /> )}
+        {dogs.map((image, index) => <Dog key={index} id={index} image={image} category={category} {...parentProps} /> )}
       </section>  
     )
   }

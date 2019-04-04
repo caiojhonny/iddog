@@ -1,11 +1,11 @@
 import React from 'react';
 import './index.scss';
 
-function Dog({image, id, category, props}) {
+function Dog({ image, id, category, history }) {
   const style = { backgroundImage: `url(${image})` };
 
   function viewDog(id, category){
-    props.history.push({
+    history.push({
       pathname: '/feed',
       search: `?category=${category}&id=${id}`
     })
