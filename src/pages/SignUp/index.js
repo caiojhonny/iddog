@@ -1,5 +1,6 @@
 import React from 'react';
 import SignUpInput from '../../components/SignUpInput';
+import HelpText from '../../components/HelpText';
 import Page from '../../components/Page';
 import './index.scss';
 
@@ -41,6 +42,7 @@ class SignUp extends React.Component {
       <Page>
         <form className="signup-form" onSubmit={this.handleSubmit}>
           <SignUpInput />
+          <HelpText msg="press enter to submit" />
         </form>
       </Page>
     )
