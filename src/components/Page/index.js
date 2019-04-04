@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components';
-import './styles/Page.scss';
+import './index.scss';
 
 const Wrapper = styled.div`
   height: '100%',

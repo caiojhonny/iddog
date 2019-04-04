@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/Dog.scss';
+import './index.scss';
 
 function Dog({image, id, category, props}) {
   const style = { backgroundImage: `url(${image})` };

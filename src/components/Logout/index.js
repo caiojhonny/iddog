@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/Logout.scss';
+import './index.scss';
 
 const Logout = ({ logout }) => {
   return (

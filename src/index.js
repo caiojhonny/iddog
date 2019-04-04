@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import './index.css';
-import SignUp from './components/SignUp';
-import Feed from './components/Feed';
-import NotFound from './components/NotFound';
+import SignUp from './pages/SignUp';
+import Feed from './pages/Feed';
+import NotFound from './pages/NotFound';
 import * as serviceWorker from './serviceWorker';
 import { PrivateRoute } from './helpers/PrivateRoute';
 

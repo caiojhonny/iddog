@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/CategoryNav.scss';
+import './index.scss';
 
 const CategoryNav = ({ category, getList }) => {
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import Dog from './Dog';
+import Dog from '../Dog';
 import queryString from 'query-string'
+import './index.scss';
 
 const FeedList = ({ dogs, category, props }) => {
   let params = queryString.parse(props.location.search)
@@ -9,7 +10,7 @@ const FeedList = ({ dogs, category, props }) => {
     const dogFiltered = dogs[params.id];
     const alt = `${category} Dog`;
     return (
-      <img src={dogFiltered} alt={alt} className="img-fluid" />
+      <img src={dogFiltered} alt={alt} className="img-dog" />
     )
   }else{
     return (

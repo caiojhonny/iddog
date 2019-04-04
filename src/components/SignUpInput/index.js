@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import './styles/SignUpInput.scss';
+import './index.scss';
 
 const Input = styled.input`
   padding: 0.5em;

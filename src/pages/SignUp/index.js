@@ -1,7 +1,7 @@
 import React from 'react';
-import SignUpInput from './SignUpInput';
-import Page from './Page';
-import './styles/SignUp.scss';
+import SignUpInput from '../../components/SignUpInput';
+import Page from '../../components/Page';
+import './index.scss';
 
 class SignUp extends React.Component {
 
