@@ -14,6 +14,7 @@ const Section = styled.section`
 
 const Img = styled.img`
   max-width: 450px;
+  width: 100%;
   margin: 0 auto;
 `
 
